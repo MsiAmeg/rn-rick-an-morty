@@ -19,20 +19,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-client
-  .query({
-    query: gql`
-      query {
-        characters {
-          results {
-            name
-          }
-        }
-      }
-    `,
-  })
-  .then(console.log);
-
 const Tab = createBottomTabNavigator();
 
 export const App = () => {
