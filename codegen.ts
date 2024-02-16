@@ -1,13 +1,11 @@
 import type {CodegenConfig} from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  overwrite: true,
   schema: 'https://rickandmortyapi.com/graphql',
   documents: 'graphql/queries/*.{tsx,ts,graphql,gql}',
   ignoreNoDocuments: true,
   generates: {
-    'types/gql/': {
-      preset: 'client',
+    'types/gql.ts': {
       plugins: [
         'typescript',
         'typescript-operations',
