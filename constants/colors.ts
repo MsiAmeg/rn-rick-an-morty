@@ -14,5 +14,6 @@ export const colors = {
     black: '#081F32',
     white: '#FFFFFF',
     gray: '#C7C7CC',
+    additional: '#6E798C',
   },
 } as const;
