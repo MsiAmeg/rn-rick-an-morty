@@ -1,18 +1,31 @@
-import {ActivityIndicator, FlatList, StyleSheet} from 'react-native';
-import {CharacterItem} from './CharacterItem';
-import {colors} from '../constants/colors';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {ActivityIndicator, FlatList, StyleSheet, Text} from 'react-native';
 import {loadErrorMessages, loadDevMessages} from '@apollo/client/dev';
+
+import {CharacterItem} from './CharacterItem';
+
 import {useGetCharactersQuery} from '../types/gql';
+
+import {colors} from '../constants/colors';
+import {StackParamList} from '../types/navigation';
 
 if (__DEV__) {
   loadDevMessages();
   loadErrorMessages();
 }
+
 export const CharactersList = () => {
+  const route = useRoute<RouteProp<StackParamList>>();
+
   const {fetchMore, error, loading, data} = useGetCharactersQuery({
+    variables: {filter: route.params},
     notifyOnNetworkStatusChange: true,
   });
   const nextPage = data?.characters?.info?.next;
+
+  if (error) {
+    <Text>Error: {error.message}</Text>;
+  }
 
   return (
     <FlatList
@@ -26,7 +39,7 @@ export const CharactersList = () => {
       onEndReached={() =>
         nextPage &&
         fetchMore({
-          variables: {page: nextPage},
+          variables: {page: nextPage, filter: route.params},
           updateQuery: (prev, {fetchMoreResult}) => {
             if (
               fetchMoreResult.characters?.results &&
