@@ -13,12 +13,14 @@ import {PlanetIcon} from '../assets/PlanetIcon.tsx';
 import {TvIcon} from '../assets/TvIcon.tsx';
 import {StyleSheet} from 'react-native';
 import {colors} from '../constants/colors.ts';
+import {GhostIconActive} from '../assets/GhostIconActive.tsx';
+import {PlanetIconActive} from '../assets/PlanetIconActive.tsx';
+import {TvIconActive} from '../assets/TvIconActive.tsx';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
   cache: new InMemoryCache(),
 });
-
 const Tab = createBottomTabNavigator();
 
 export const App = () => {
@@ -37,21 +39,24 @@ export const App = () => {
           }}>
           <Tab.Screen
             options={{
-              tabBarIcon: ({color}) => <GhostIcon color={color} />,
+              tabBarIcon: ({focused}) =>
+                focused ? <GhostIconActive /> : <GhostIcon />,
             }}
             name="Character"
             component={CharacterScreen}
           />
           <Tab.Screen
             options={{
-              tabBarIcon: ({color}) => <PlanetIcon color={color} />,
+              tabBarIcon: ({focused}) =>
+                focused ? <PlanetIconActive /> : <PlanetIcon />,
             }}
             name="Location"
             component={LocationScreen}
           />
           <Tab.Screen
             options={{
-              tabBarIcon: ({color}) => <TvIcon color={color} />,
+              tabBarIcon: ({focused}) =>
+                focused ? <TvIconActive /> : <TvIcon />,
             }}
             name="Episode"
             component={EpisodeScreen}
