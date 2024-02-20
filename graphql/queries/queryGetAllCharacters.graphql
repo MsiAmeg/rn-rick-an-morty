@@ -1,10 +1,17 @@
-query GetAllCharacters {
-  characters {
+query GetCharacters($page: Int, $filter: FilterCharacter) {
+  characters(page: $page, filter: $filter) {
+    info {
+      count
+      pages
+      next
+    }
     results {
       id
+      image
       name
       status
-      image
+      species
+      gender
     }
   }
 }
