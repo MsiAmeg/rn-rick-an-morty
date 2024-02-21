@@ -4,6 +4,7 @@ import {FilterCharacter} from './gql';
 export type StackParamList = {
   Characters: FilterCharacter;
   Filter: undefined;
+  FilterInput: undefined;
 };
 
 export type CharactersScreenProps = NativeStackScreenProps<
@@ -13,4 +14,8 @@ export type CharactersScreenProps = NativeStackScreenProps<
 export type FilterScreenProps = NativeStackScreenProps<
   StackParamList,
   'Filter'
+>;
+export type FilterInputScreenProps = NativeStackScreenProps<
+  StackParamList,
+  'FilterInput'
 >;

@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import {SafeContainer} from '../components/styled';
+import {FilterHeader, FilterTitle, SafeContainer} from '../components/styled';
 import {FiltersList} from '../components/FiltersList';
 
 import {colors} from '../constants/colors';
@@ -22,42 +22,24 @@ export const CharactersFilterScreen = () => {
 
   return (
     <SafeContainer style={{gap: 20}}>
-      <Header>
+      <FilterHeader>
         {isFiltersApplied && (
           <ClearBtn onPress={() => setCharactersFilter({})}>
             <ClearBtnText>Clear</ClearBtnText>
           </ClearBtn>
         )}
-        <Title>Filter</Title>
+        <FilterTitle>Filter</FilterTitle>
         <SubmitBtn
           onPress={() => {
             navigation.navigate('Characters', charactersfilters);
           }}>
           <SubmitBtnText>APPLY</SubmitBtnText>
         </SubmitBtn>
-      </Header>
+      </FilterHeader>
       <FiltersList />
     </SafeContainer>
   );
 };
-
-const Header = styled.View`
-  position: relative;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Title = styled.Text`
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 900;
-  line-height: 20px;
-  letter-spacing: -0.24px;
-  color: ${colors.basic.black};
-  padding: 12px 0;
-`;
 
 const ClearBtn = styled.Pressable`
   position: absolute;

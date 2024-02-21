@@ -8,14 +8,14 @@ import {CharacterScreen} from '../screens/CharacterScreen';
 import {LocationScreen} from '../screens/LocationScreen';
 import {EpisodeScreen} from '../screens/EpisodeScreen';
 
-import {GhostIcon} from '../assets/GhostIcon.tsx';
-import {PlanetIcon} from '../assets/PlanetIcon.tsx';
-import {TvIcon} from '../assets/TvIcon.tsx';
+import {GhostIcon} from '../assets/icons/navigation/GhostIcon.tsx';
+import {PlanetIcon} from '../assets/icons/navigation/PlanetIcon.tsx';
+import {TvIcon} from '../assets/icons/navigation/TvIcon.tsx';
 import {StyleSheet} from 'react-native';
 import {colors} from '../constants/colors.ts';
-import {GhostIconActive} from '../assets/GhostIconActive.tsx';
-import {PlanetIconActive} from '../assets/PlanetIconActive.tsx';
-import {TvIconActive} from '../assets/TvIconActive.tsx';
+import {GhostIconActive} from '../assets/icons/navigation/GhostIconActive.tsx';
+import {PlanetIconActive} from '../assets/icons/navigation/PlanetIconActive.tsx';
+import {TvIconActive} from '../assets/icons/navigation/TvIconActive.tsx';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',

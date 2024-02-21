@@ -1,5 +1,6 @@
 import {Characters} from '../components/Characters';
 import {FiltersProvider} from '../contexts/CharacterFilterContext';
+import {CharactersFilterInputScreen} from './CharactersFilterInputScreen';
 import {CharactersFilterScreen} from './CharactersFilterScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -16,6 +17,14 @@ export const CharacterScreen = () => {
           options={{
             presentation: 'containedModal',
             animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="FilterInput"
+          component={CharactersFilterInputScreen}
+          options={{
+            presentation: 'fullScreenModal',
+            animation: 'slide_from_right',
           }}
         />
       </Stack.Navigator>
