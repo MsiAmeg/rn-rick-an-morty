@@ -72,7 +72,7 @@ export const FiltersList = () => {
         renderSectionHeader={({section: {title}}) => (
           <SectionTitle>{title}</SectionTitle>
         )}
-        SectionSeparatorComponent={() => <SectionsSeporator />}
+        SectionSeparatorComponent={() => <SectionsSeparator />}
       />
     </FiltersContainer>
   );
@@ -104,7 +104,7 @@ const SectionTitle = styled.Text`
   color: ${colors.grayBase.gray2};
 `;
 
-const SectionsSeporator = styled.View`
+const SectionsSeparator = styled.View`
   width: 100%;
   border-bottom-width: 0.5px;
   border-top-width: 0.5px;

@@ -31,7 +31,6 @@ const SectionItemContainer = styled.Pressable`
   align-items: center;
   gap: 13px;
   padding-left: 16px;
-  padding-right: 16px;
 `;
 
 const SectionItemText = styled.Text<{$IsLast: boolean}>`
