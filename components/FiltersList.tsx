@@ -97,7 +97,10 @@ const SectionTitle = styled.Text`
   line-height: 18px;
   letter-spacing: -0.24px;
   text-align: left;
-  padding: 20px 16px 10px;
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 10px;
   color: ${colors.grayBase.gray2};
 `;
 

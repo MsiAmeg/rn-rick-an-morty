@@ -25,7 +25,10 @@ export const FilterTitle = styled.Text`
   line-height: 20px;
   letter-spacing: -0.24px;
   color: ${colors.basic.black};
-  padding: 12px 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
 `;
 
 export const Devider = styled.View`

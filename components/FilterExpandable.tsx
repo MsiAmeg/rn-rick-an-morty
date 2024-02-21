@@ -1,7 +1,8 @@
 import {PressableProps} from 'react-native';
-import styled from 'styled-components/native';
 import {colors} from '../constants/colors';
 import {Switch} from './Switch';
+
+import styled from 'styled-components/native';
 
 type FilterExpandableProps = PressableProps & {
   title: string;
@@ -32,7 +33,10 @@ const Container = styled.Pressable`
   border-bottom-width: 1px;
   border-top-width: 1px;
   border-color: ${colors.grayBase.gray2};
-  padding: 9px 16px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 16px;
+  padding-right: 16px;
   align-items: center;
   gap: 12px;
 `;
@@ -55,4 +59,3 @@ const Description = styled.Text`
   letter-spacing: -0.24px;
   color: ${colors.basic.additional};
 `;
-const Date = styled.Text``;

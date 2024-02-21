@@ -33,7 +33,10 @@ const CharacterImage = styled.Image`
 const CharacterInfoContainer = styled.View`
   height: 100%;
   max-height: 80px;
-  padding: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
 `;
 const CharacterName = styled.Text`
   font-family: Roboto;

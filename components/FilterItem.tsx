@@ -30,7 +30,8 @@ const SectionItemContainer = styled.Pressable`
   flex-direction: row;
   align-items: center;
   gap: 13px;
-  padding: 0 16px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 const SectionItemText = styled.Text<{$IsLast: boolean}>`
@@ -44,5 +45,6 @@ const SectionItemText = styled.Text<{$IsLast: boolean}>`
   color: ${colors.basic.black};
   ${props => !props.$IsLast && 'border-bottom-width: 1px;'}
   border-color: ${colors.grayBase.gray2};
-  padding: 11px 0;
+  padding-top: 11px;
+  padding-bottom: 11px;
 `;

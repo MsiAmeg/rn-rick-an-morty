@@ -34,7 +34,10 @@ export const Characters = () => {
 const Header = styled.View`
   width: 100%;
   background-color: ${colors.grayBase.gray5};
-  padding: 10px 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 const Title = styled.Text`

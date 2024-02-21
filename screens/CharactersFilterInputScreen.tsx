@@ -79,7 +79,10 @@ const VoiceIconWrapper = styled.Pressable.attrs(() => ({
 const SearchInputContainer = styled.View`
   position: relative;
   flex-direction: row;
-  margin: 6px 16px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 16px;
+  margin-right: 16px;
   align-items: center;
   border-radius: 16px;
   background-color: #7676801f;
@@ -88,6 +91,9 @@ const SearchInputContainer = styled.View`
 const SearchInput = styled.TextInput`
   flex: 1;
   min-height: 20px;
-  padding: 7px 32px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 32px;
+  padding-right: 32px;
   color: ${colors.basic.black};
 `;

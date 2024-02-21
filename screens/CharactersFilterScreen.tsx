@@ -44,8 +44,12 @@ export const CharactersFilterScreen = () => {
 const ClearBtn = styled.Pressable`
   position: absolute;
   left: 0;
-  padding: 5px 12px;
-  margin: 0 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
 `;
 
 const ClearBtnText = styled.Text`
@@ -63,8 +67,12 @@ const SubmitBtn = styled.Pressable`
   right: 0;
   background-color: ${colors.accent.indigo};
   border-radius: 16px;
-  padding: 5px 12px;
-  margin: 0 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
 `;
 
 const SubmitBtnText = styled.Text`
