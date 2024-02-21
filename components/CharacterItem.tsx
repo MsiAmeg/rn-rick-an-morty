@@ -9,7 +9,7 @@ export const CharacterItem = ({name, image, status}: Partial<Character>) => {
       <CharacterImage resizeMode="cover" source={{uri: image ?? ''}} />
       <CharacterInfoContainer>
         <CharacterStatus>{status}</CharacterStatus>
-        <CharacterName>{name}</CharacterName>
+        <CharacterName numberOfLines={2}>{name}</CharacterName>
       </CharacterInfoContainer>
     </CharacterCard>
   );
