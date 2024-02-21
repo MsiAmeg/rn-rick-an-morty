@@ -9,14 +9,19 @@ import {SafeContainer} from './styled';
 import {colors} from '../constants/colors';
 
 import styled from 'styled-components/native';
+import {useContext} from 'react';
+import {CharactersFiltersContext} from '../contexts/CharacterFilterContext';
 
 export const Characters = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
+  const {isFiltersApplied} = useContext(CharactersFiltersContext);
 
   return (
     <SafeContainer>
       <Header>
         <FilterBtn onPress={() => navigation.navigate('Filter')}>
+          {isFiltersApplied && <FilterIndicator />}
           <FilterBtnTxt>Filter</FilterBtnTxt>
         </FilterBtn>
         <Title>Character</Title>
@@ -44,8 +49,19 @@ const Title = styled.Text`
   padding-bottom: 10px;
 `;
 
-const FilterBtn = styled.Pressable``;
+const FilterBtn = styled.Pressable`
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-end;
+`;
 
+const FilterIndicator = styled.View`
+  width: 12px;
+  height: 12px;
+  border-radius: 100px;
+  background-color: ${colors.accent.indigo};
+`;
 const FilterBtnTxt = styled.Text`
   font-family: Roboto;
   font-size: 17px;
