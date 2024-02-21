@@ -4,7 +4,10 @@ import {FilterCharacter} from './gql';
 export type StackParamList = {
   Characters: FilterCharacter;
   Filter: undefined;
-  FilterInput: undefined;
+  FilterInput: {
+    title: string;
+    fieldName: keyof Pick<FilterCharacter, 'name' | 'species'>;
+  };
 };
 
 export type CharactersScreenProps = NativeStackScreenProps<

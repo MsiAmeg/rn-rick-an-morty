@@ -13,6 +13,7 @@ import styled from 'styled-components/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from '../types/navigation';
 import {useNavigation} from '@react-navigation/native';
+import {FilterExpandable} from './FilterExpandable';
 
 export const FiltersList = () => {
   const {charactersfilters, setCharactersFilter} = useContext(
@@ -23,13 +24,30 @@ export const FiltersList = () => {
 
   return (
     <FiltersContainer>
-      <Pressable
-        onPress={() => navigation.navigate('FilterInput')}
-        style={{
-          width: '100%',
-          height: 50,
-          backgroundColor: 'gray',
-        }}></Pressable>
+      <ExpandableFiltersWrapper>
+        <FilterExpandable
+          isActive={charactersfilters.species ? true : false}
+          title="Species"
+          desription="Enter species"
+          onPress={() =>
+            navigation.navigate('FilterInput', {
+              title: 'Species',
+              fieldName: 'species',
+            })
+          }
+        />
+        <FilterExpandable
+          isActive={charactersfilters.name ? true : false}
+          title="Name"
+          desription="Give a name"
+          onPress={() =>
+            navigation.navigate('FilterInput', {
+              title: 'Name',
+              fieldName: 'name',
+            })
+          }
+        />
+      </ExpandableFiltersWrapper>
       <SectionList
         style={{flex: 1, width: '100%'}}
         sections={filtersData}
@@ -65,6 +83,12 @@ const FiltersContainer = styled.View`
   align-items: center;
   justify-content: center;
 `;
+
+const ExpandableFiltersWrapper = styled.View`
+  width: 100%;
+  gap: 20px;
+`;
+
 const SectionTitle = styled.Text`
   width: 100%;
   font-family: Roboto;

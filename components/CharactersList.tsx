@@ -15,7 +15,7 @@ if (__DEV__) {
 }
 
 export const CharactersList = () => {
-  const route = useRoute<RouteProp<StackParamList>>();
+  const route = useRoute<RouteProp<StackParamList, 'Characters'>>();
 
   const {fetchMore, error, loading, data} = useGetCharactersQuery({
     variables: {filter: route.params},
