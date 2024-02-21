@@ -19,7 +19,7 @@ const CharacterCard = styled.View`
   flex: 1;
   width: 100%;
   max-height: 220px;
-  border-color: #efeff4;
+  border-color: ${colors.grayBase.gray5};
   border-width: 1px;
   border-radius: 8px;
   overflow: hidden;
