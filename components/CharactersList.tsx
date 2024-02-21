@@ -27,6 +27,14 @@ export const CharactersList = () => {
     <Text>Error: {error.message}</Text>;
   }
 
+  const handleEndReached = () => {
+    if (!loading && nextPage) {
+      fetchMore({
+        variables: {page: nextPage, filter: route.params},
+      });
+    }
+  };
+
   return (
     <FlatList
       numColumns={2}
@@ -36,31 +44,7 @@ export const CharactersList = () => {
       data={data?.characters?.results}
       renderItem={({item}) => item && CharacterItem(item)}
       keyExtractor={item => item?.id!}
-      onEndReached={() =>
-        nextPage &&
-        fetchMore({
-          variables: {page: nextPage, filter: route.params},
-          updateQuery: (prev, {fetchMoreResult}) => {
-            if (
-              fetchMoreResult.characters?.results &&
-              prev.characters?.results &&
-              !loading
-            ) {
-              return {
-                characters: {
-                  __typename: prev.characters?.__typename,
-                  info: fetchMoreResult.characters?.info,
-                  results: [
-                    ...prev.characters?.results,
-                    ...fetchMoreResult.characters.results,
-                  ],
-                },
-              };
-            }
-            return prev;
-          },
-        })
-      }
+      onEndReached={handleEndReached}
       onEndReachedThreshold={0.5}
       ListFooterComponent={() =>
         loading && (
@@ -68,21 +52,6 @@ export const CharactersList = () => {
         )
       }
     />
-    // <FlatList
-    //   numColumns={2}
-    //   style={styles.flatList}
-    //   contentContainerStyle={styles.contentContainerStyle}
-    //   columnWrapperStyle={styles.columnWrapperStyle}
-    //   data={characters}
-    //   renderItem={({item}) => item && CharacterItem(item)}
-    //   onEndReached={() => nextPage && GetCharacters(nextPage)}
-    //   onEndReachedThreshold={0.5}
-    //   ListFooterComponent={() =>
-    //     loading && (
-    //       <ActivityIndicator size={'large'} color={colors.accent.indigo} />
-    //     )
-    //   }
-    // />
   );
 };
 

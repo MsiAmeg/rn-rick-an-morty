@@ -19,7 +19,24 @@ import {TvIconActive} from '../assets/TvIconActive.tsx';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          characters: {
+            keyArgs: ['filter'],
+
+            merge(exsisting = {}, incoming) {
+              return {
+                info: incoming.info,
+                results: [...(exsisting.results ?? []), ...incoming.results],
+              };
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 const Tab = createBottomTabNavigator();
 
