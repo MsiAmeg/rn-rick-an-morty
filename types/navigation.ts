@@ -8,7 +8,7 @@ export type StackParamList = {
     title: string;
     fieldName: keyof Pick<FilterCharacter, 'name' | 'species'>;
   };
-  Detail: QueryCharacterArgs;
+  CharacterDetail: QueryCharacterArgs;
 };
 
 export type CharactersScreenProps = NativeStackScreenProps<
@@ -25,5 +25,5 @@ export type FilterInputScreenProps = NativeStackScreenProps<
 >;
 export type CharacterDetailScreenProps = NativeStackScreenProps<
   StackParamList,
-  'Detail'
+  'CharacterDetail'
 >;

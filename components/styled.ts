@@ -10,7 +10,7 @@ export const SafeContainer = styled(SafeAreaView)`
   justify-content: center;
 `;
 
-export const FilterHeader = styled.View`
+export const StackNavHeader = styled.View`
   position: relative;
   width: 100%;
   flex-direction: row;
@@ -18,7 +18,7 @@ export const FilterHeader = styled.View`
   justify-content: center;
 `;
 
-export const FilterTitle = styled.Text`
+export const StackNavTitle = styled.Text`
   font-family: Roboto;
   font-size: 15px;
   font-weight: 900;

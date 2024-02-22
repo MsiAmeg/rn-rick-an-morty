@@ -25,7 +25,7 @@ export const CharacterScreen = () => {
           component={CharactersFilterInputScreen}
           options={{
             presentation: 'fullScreenModal',
-            animation: 'slide_from_right',
+            animation: 'ios',
           }}
         />
         <Stack.Screen
@@ -33,7 +33,7 @@ export const CharacterScreen = () => {
           component={CharacterDetailScreen}
           options={{
             presentation: 'containedModal',
-            animation: 'fade',
+            animation: 'ios',
           }}
         />
       </Stack.Navigator>

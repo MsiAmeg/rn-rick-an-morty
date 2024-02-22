@@ -4,8 +4,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from '../../types/navigation';
 import {
   Devider,
-  FilterHeader,
-  FilterTitle,
+  StackNavHeader,
+  StackNavTitle,
   SafeContainer,
 } from '../../components/styled';
 import {GoBackBtn} from '../../components/GoBackBtn';
@@ -43,10 +43,10 @@ export const CharactersFilterInputScreen = () => {
 
   return (
     <SafeContainer style={{justifyContent: 'flex-start'}}>
-      <FilterHeader>
+      <StackNavHeader>
         <GoBackBtn onPress={() => navigation.goBack()} />
-        <FilterTitle>{route.params.title}</FilterTitle>
-      </FilterHeader>
+        <StackNavTitle>{route.params.title}</StackNavTitle>
+      </StackNavHeader>
       <SearchInputContainer>
         <SearchIconWrapper />
         <SearchInput

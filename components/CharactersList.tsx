@@ -1,4 +1,4 @@
-import {RouteProp, useRoute} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {ActivityIndicator, FlatList, StyleSheet, Text} from 'react-native';
 import {loadErrorMessages, loadDevMessages} from '@apollo/client/dev';
 
@@ -8,6 +8,7 @@ import {useGetCharactersQuery} from '../types/gql';
 
 import {colors} from '../constants/colors';
 import {StackParamList} from '../types/navigation';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 if (__DEV__) {
   loadDevMessages();
@@ -16,6 +17,7 @@ if (__DEV__) {
 
 export const CharactersList = () => {
   const route = useRoute<RouteProp<StackParamList, 'Characters'>>();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
 
   const {fetchMore, error, loading, data} = useGetCharactersQuery({
     variables: {filter: route.params},
@@ -42,7 +44,14 @@ export const CharactersList = () => {
       contentContainerStyle={styles.contentContainerStyle}
       columnWrapperStyle={styles.columnWrapperStyle}
       data={data?.characters?.results}
-      renderItem={({item}) => item && CharacterItem(item)}
+      renderItem={({item}) =>
+        item &&
+        CharacterItem({
+          ...item,
+          handleClick: () =>
+            navigation.navigate('CharacterDetail', {id: item.id ?? '1'}),
+        })
+      }
       keyExtractor={item => item?.id!}
       onEndReached={handleEndReached}
       onEndReachedThreshold={0.5}

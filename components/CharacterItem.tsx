@@ -3,9 +3,18 @@ import {Character} from '../types/gql';
 
 import styled from 'styled-components/native';
 
-export const CharacterItem = ({name, image, status}: Partial<Character>) => {
+type CharacterItemProps = Partial<Character> & {
+  handleClick?: () => void;
+};
+
+export const CharacterItem = ({
+  name,
+  image,
+  status,
+  handleClick,
+}: CharacterItemProps) => {
   return (
-    <CharacterCard>
+    <CharacterCard onPress={handleClick}>
       <CharacterImage resizeMode="cover" source={{uri: image ?? ''}} />
       <CharacterInfoContainer>
         <CharacterStatus>{status}</CharacterStatus>
@@ -15,7 +24,7 @@ export const CharacterItem = ({name, image, status}: Partial<Character>) => {
   );
 };
 
-const CharacterCard = styled.View`
+const CharacterCard = styled.Pressable`
   flex: 1;
   width: 100%;
   max-height: 220px;

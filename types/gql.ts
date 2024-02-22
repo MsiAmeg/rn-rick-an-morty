@@ -211,6 +211,13 @@ export type GetCharactersQueryVariables = Exact<{
 
 export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null, pages?: number | null, next?: number | null } | null, results?: Array<{ __typename?: 'Character', id?: string | null, image?: string | null, name?: string | null, status?: string | null, species?: string | null, gender?: string | null } | null> | null } | null };
 
+export type GetCharacterByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetCharacterByIdQuery = { __typename?: 'Query', character?: { __typename?: 'Character', image?: string | null, status?: string | null, name?: string | null, species?: string | null, gender?: string | null, type?: string | null, origin?: { __typename?: 'Location', name?: string | null } | null, location?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, episode: Array<{ __typename?: 'Episode', id?: string | null, episode?: string | null, name?: string | null, created?: string | null } | null> } | null };
+
 
 export const GetCharactersDocument = gql`
     query GetCharacters($page: Int, $filter: FilterCharacter) {
@@ -265,3 +272,61 @@ export type GetCharactersQueryHookResult = ReturnType<typeof useGetCharactersQue
 export type GetCharactersLazyQueryHookResult = ReturnType<typeof useGetCharactersLazyQuery>;
 export type GetCharactersSuspenseQueryHookResult = ReturnType<typeof useGetCharactersSuspenseQuery>;
 export type GetCharactersQueryResult = Apollo.QueryResult<GetCharactersQuery, GetCharactersQueryVariables>;
+export const GetCharacterByIdDocument = gql`
+    query GetCharacterById($id: ID!) {
+  character(id: $id) {
+    image
+    status
+    name
+    species
+    gender
+    origin {
+      name
+    }
+    type
+    location {
+      id
+      name
+    }
+    episode {
+      id
+      episode
+      name
+      created
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCharacterByIdQuery__
+ *
+ * To run a query within a React component, call `useGetCharacterByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCharacterByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCharacterByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetCharacterByIdQuery(baseOptions: Apollo.QueryHookOptions<GetCharacterByIdQuery, GetCharacterByIdQueryVariables> & ({ variables: GetCharacterByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCharacterByIdQuery, GetCharacterByIdQueryVariables>(GetCharacterByIdDocument, options);
+      }
+export function useGetCharacterByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCharacterByIdQuery, GetCharacterByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCharacterByIdQuery, GetCharacterByIdQueryVariables>(GetCharacterByIdDocument, options);
+        }
+export function useGetCharacterByIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCharacterByIdQuery, GetCharacterByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCharacterByIdQuery, GetCharacterByIdQueryVariables>(GetCharacterByIdDocument, options);
+        }
+export type GetCharacterByIdQueryHookResult = ReturnType<typeof useGetCharacterByIdQuery>;
+export type GetCharacterByIdLazyQueryHookResult = ReturnType<typeof useGetCharacterByIdLazyQuery>;
+export type GetCharacterByIdSuspenseQueryHookResult = ReturnType<typeof useGetCharacterByIdSuspenseQuery>;
+export type GetCharacterByIdQueryResult = Apollo.QueryResult<GetCharacterByIdQuery, GetCharacterByIdQueryVariables>;

@@ -2,8 +2,8 @@ import {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import {
-  FilterHeader,
-  FilterTitle,
+  StackNavHeader,
+  StackNavTitle,
   SafeContainer,
 } from '../../components/styled';
 import {FiltersList} from '../../components/FiltersList';
@@ -26,20 +26,20 @@ export const CharactersFilterScreen = () => {
 
   return (
     <SafeContainer style={{gap: 20}}>
-      <FilterHeader>
+      <StackNavHeader>
         {isFiltersApplied && (
           <ClearBtn onPress={() => setCharactersFilter({})}>
             <ClearBtnText>Clear</ClearBtnText>
           </ClearBtn>
         )}
-        <FilterTitle>Filter</FilterTitle>
+        <StackNavTitle>Filter</StackNavTitle>
         <SubmitBtn
           onPress={() => {
             navigation.navigate('Characters', charactersfilters);
           }}>
           <SubmitBtnText>APPLY</SubmitBtnText>
         </SubmitBtn>
-      </FilterHeader>
+      </StackNavHeader>
       <FiltersList />
     </SafeContainer>
   );
