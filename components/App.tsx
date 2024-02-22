@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {ApolloClient, InMemoryCache, ApolloProvider, gql} from '@apollo/client';
 
-import {CharacterScreen} from '../screens/CharacterScreen';
+import {CharacterScreen} from '../screens/character/CharacterScreen.tsx';
 import {LocationScreen} from '../screens/LocationScreen';
 import {EpisodeScreen} from '../screens/EpisodeScreen';
 

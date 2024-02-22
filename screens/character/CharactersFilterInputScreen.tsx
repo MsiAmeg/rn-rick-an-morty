@@ -1,20 +1,20 @@
 import {useContext} from 'react';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {StackParamList} from '../types/navigation';
+import {StackParamList} from '../../types/navigation';
 import {
   Devider,
   FilterHeader,
   FilterTitle,
   SafeContainer,
-} from '../components/styled';
-import {GoBackBtn} from '../components/GoBackBtn';
+} from '../../components/styled';
+import {GoBackBtn} from '../../components/GoBackBtn';
 
-import {colors} from '../constants/colors';
-import {SearchIcon} from '../assets/icons/SearchIcon';
-import {VoiceIcon} from '../assets/icons/VoiceIcon';
+import {colors} from '../../constants/colors';
+import {SearchIcon} from '../../assets/icons/SearchIcon';
+import {VoiceIcon} from '../../assets/icons/VoiceIcon';
 
-import {CharactersFiltersContext} from '../contexts/CharacterFilterContext';
+import {CharactersFiltersContext} from '../../contexts/CharacterFilterContext';
 
 import {
   NativeSyntheticEvent,

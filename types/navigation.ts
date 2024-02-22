@@ -1,5 +1,5 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {FilterCharacter} from './gql';
+import {FilterCharacter, QueryCharacterArgs} from './gql';
 
 export type StackParamList = {
   Characters: FilterCharacter;
@@ -8,6 +8,7 @@ export type StackParamList = {
     title: string;
     fieldName: keyof Pick<FilterCharacter, 'name' | 'species'>;
   };
+  Detail: QueryCharacterArgs;
 };
 
 export type CharactersScreenProps = NativeStackScreenProps<
@@ -21,4 +22,8 @@ export type FilterScreenProps = NativeStackScreenProps<
 export type FilterInputScreenProps = NativeStackScreenProps<
   StackParamList,
   'FilterInput'
+>;
+export type CharacterDetailScreenProps = NativeStackScreenProps<
+  StackParamList,
+  'Detail'
 >;

@@ -1,15 +1,19 @@
 import {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import {FilterHeader, FilterTitle, SafeContainer} from '../components/styled';
-import {FiltersList} from '../components/FiltersList';
+import {
+  FilterHeader,
+  FilterTitle,
+  SafeContainer,
+} from '../../components/styled';
+import {FiltersList} from '../../components/FiltersList';
 
-import {colors} from '../constants/colors';
+import {colors} from '../../constants/colors';
 
-import {CharactersFiltersContext} from '../contexts/CharacterFilterContext';
+import {CharactersFiltersContext} from '../../contexts/CharacterFilterContext';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {StackParamList} from '../types/navigation';
+import {StackParamList} from '../../types/navigation';
 
 import styled from 'styled-components/native';
 
