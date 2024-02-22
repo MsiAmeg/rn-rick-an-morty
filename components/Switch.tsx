@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
 import {colors} from '../constants/colors';
+import styled from 'styled-components/native';
 
 type SwitchProps = {
   isActive: boolean;
@@ -7,26 +7,26 @@ type SwitchProps = {
 
 export const Switch = ({isActive}: SwitchProps) => {
   return (
-    <SectionItemSwitch $IsActive={isActive}>
-      <SectionItemSwitchCircle $IsActive={isActive} />
+    <SectionItemSwitch $isActive={isActive}>
+      <SectionItemSwitchCircle $isActive={isActive} />
     </SectionItemSwitch>
   );
 };
 
-const SectionItemSwitch = styled.View<{$IsActive: boolean}>`
+const SectionItemSwitch = styled.View<{$isActive: boolean}>`
   width: 24px;
   height: 24px;
   border: 1px solid
-    ${props => (props.$IsActive ? colors.accent.indigo : colors.grayBase.gray2)};
+    ${props => (props.$isActive ? colors.accent.indigo : colors.grayBase.gray2)};
   border-radius: 100px;
   align-items: center;
   justify-content: center;
 `;
 
-const SectionItemSwitchCircle = styled.Pressable<{$IsActive: boolean}>`
+const SectionItemSwitchCircle = styled.Pressable<{$isActive: boolean}>`
   width: 14px;
   height: 14px;
   background-color: ${props =>
-    props.$IsActive ? colors.accent.indigo : 'transparent'};
+    props.$isActive ? colors.accent.indigo : 'transparent'};
   border-radius: 100px;
 `;

@@ -58,7 +58,7 @@ export const FiltersList = () => {
     <FiltersContainer>
       <ExpandableFiltersWrapper>
         <FilterExpandable
-          isActive={charactersfilters.species ? true : false}
+          isActive={!!charactersfilters.species}
           title="Species"
           desription="Enter species"
           onPress={() =>
@@ -69,7 +69,7 @@ export const FiltersList = () => {
           }
         />
         <FilterExpandable
-          isActive={charactersfilters.name ? true : false}
+          isActive={!!charactersfilters.name}
           title="Name"
           desription="Give a name"
           onPress={() =>
