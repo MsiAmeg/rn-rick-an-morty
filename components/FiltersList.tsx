@@ -35,17 +35,20 @@ export const FiltersList = () => {
       const isLast = index === section.data.length - 1;
 
       return (
-        <FilterItem
-          isActive={isActive}
-          isLast={isLast}
-          title={title}
-          onPress={() =>
-            setCharactersFilter({
-              ...charactersfilters,
-              [section.id]: title,
-            })
-          }
-        />
+        <>
+          <FilterItem
+            isActive={isActive}
+            // isLast={isLast}
+            title={title}
+            onPress={() =>
+              setCharactersFilter({
+                ...charactersfilters,
+                [section.id]: title,
+              })
+            }
+          />
+          {!isLast && <SectionsSeparator $width={87} />}
+        </>
       );
     },
     [charactersfilters],
@@ -84,7 +87,7 @@ export const FiltersList = () => {
         renderSectionHeader={({section: {title}}) => (
           <SectionTitle>{title}</SectionTitle>
         )}
-        SectionSeparatorComponent={() => <SectionsSeparator />}
+        SectionSeparatorComponent={() => <SectionsSeparator $width={100} />}
       />
     </FiltersContainer>
   );
@@ -116,8 +119,9 @@ const SectionTitle = styled.Text`
   color: ${colors.grayBase.gray2};
 `;
 
-const SectionsSeparator = styled.View`
-  width: 100%;
+const SectionsSeparator = styled.View<{$width: number}>`
+  align-self: flex-end;
+  width: ${props => props.$width}%;
   border-bottom-width: 0.5px;
   border-top-width: 0.5px;
   border-color: ${colors.grayBase.gray2};

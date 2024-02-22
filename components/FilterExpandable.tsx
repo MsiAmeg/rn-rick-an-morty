@@ -1,6 +1,8 @@
-import {PressableProps} from 'react-native';
+import {PressableProps, Text} from 'react-native';
 import {colors} from '../constants/colors';
 import {Switch} from './Switch';
+
+import {ArrowRight} from '../assets/icons/ArrowRight';
 
 import styled from 'styled-components/native';
 
@@ -23,6 +25,7 @@ export const FilterExpandable = ({
         <Title>{title}</Title>
         <Description>{desription}</Description>
       </InfoWrapper>
+      <ArrowIcon />
     </Container>
   );
 };
@@ -58,4 +61,8 @@ const Description = styled.Text`
   line-height: 18px;
   letter-spacing: -0.24px;
   color: ${colors.basic.additional};
+`;
+
+const ArrowIcon = styled.View.attrs({children: <ArrowRight />})`
+  margin-left: auto;
 `;
