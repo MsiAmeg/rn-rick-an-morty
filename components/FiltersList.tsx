@@ -1,19 +1,20 @@
-import {useContext} from 'react';
+import {useCallback, useContext} from 'react';
 
-import {Pressable, SectionList} from 'react-native';
+import {SectionList, SectionListRenderItem} from 'react-native';
 
 import {FilterItem} from './FilterItem';
 
-import {filtersData} from '../constants/filtersData';
+import {FiltersDataT, filtersData} from '../constants/filtersData';
 import {colors} from '../constants/colors';
 
 import {CharactersFiltersContext} from '../contexts/CharacterFilterContext';
 
-import styled from 'styled-components/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from '../types/navigation';
 import {useNavigation} from '@react-navigation/native';
 import {FilterExpandable} from './FilterExpandable';
+
+import styled from 'styled-components/native';
 
 export const FiltersList = () => {
   const {charactersfilters, setCharactersFilter} = useContext(
@@ -21,6 +22,34 @@ export const FiltersList = () => {
   );
 
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
+  const renderItem: SectionListRenderItem<
+    {
+      id: number;
+      title: string;
+    },
+    FiltersDataT
+  > = useCallback(
+    ({section, item: {title}, index}) => {
+      const isActive = charactersfilters[section.id] === title;
+      const isLast = index === section.data.length - 1;
+
+      return (
+        <FilterItem
+          isActive={isActive}
+          isLast={isLast}
+          title={title}
+          onPress={() =>
+            setCharactersFilter({
+              ...charactersfilters,
+              [section.id]: title,
+            })
+          }
+        />
+      );
+    },
+    [charactersfilters],
+  );
 
   return (
     <FiltersContainer>
@@ -51,24 +80,7 @@ export const FiltersList = () => {
       <SectionList
         style={{flex: 1, width: '100%'}}
         sections={filtersData}
-        renderItem={({section, item: {title}, index}) => {
-          const isActive = charactersfilters[section.id] === title;
-          const isLast = index === section.data.length - 1;
-
-          return (
-            <FilterItem
-              isActive={isActive}
-              isLast={isLast}
-              title={title}
-              onPress={() =>
-                setCharactersFilter({
-                  ...charactersfilters,
-                  [section.id]: title,
-                })
-              }
-            />
-          );
-        }}
+        renderItem={renderItem}
         renderSectionHeader={({section: {title}}) => (
           <SectionTitle>{title}</SectionTitle>
         )}

@@ -1,15 +1,15 @@
 import {FilterCharacter} from '../types/gql';
 
-export type filtersDataT = {
+export type FiltersDataT = {
   id: Required<keyof FilterCharacter>;
   title: string;
   data: {
     id: number;
     title: string;
   }[];
-}[];
+};
 
-export const filtersData: filtersDataT = [
+export const filtersData: FiltersDataT[] = [
   {
     id: 'status',
     title: 'Status',
